@@ -1,11 +1,11 @@
 <?php
 
-$ym = isset($_GET['ym']) ? $_GET['ym'] : date('Y-m');
+$yearMonth = isset($_GET['yearMonth']) ? $_GET['yearMonth'] : date('Y-m');
 
-$timestamp = strtotime($ym . '-01');
+$timestamp = strtotime($yearMonth . '-01');
 if ($timestamp === false) {
-    $ym = date('Y-m');
-    $timestamp = strtotime($ym . '-01');
+    $yearMonth = date('Y-m');
+    $timestamp = strtotime($yearMonth . '-01');
 }
 
 $today = date('Y-m-j', time());
@@ -32,7 +32,7 @@ $week .= str_repeat('<td></td>', $str);
 
 for ($day = 1; $day <= $day_count; $day++, $str++) {
 
-    $date = $ym . '-' . $day;
+    $date = $yearMonth . '-' . $day;
 
     if ($today == $date) {
         $week .= '<td class="today">' . $day;
@@ -53,13 +53,13 @@ for ($day = 1; $day <= $day_count; $day++, $str++) {
     }
 }
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="utf-8">
     <title>PHP Calendar</title>
-    <link href="https://fonts.googleapis.com/css?family=Noto+Sans" rel="stylesheet">
     <style>
         .container {
             display: flex;
@@ -96,7 +96,7 @@ for ($day = 1; $day <= $day_count; $day++, $str++) {
 
         a {
             text-decoration: none;
-            color:blueviolet;
+            color: blueviolet;
         }
 
         a:active {
@@ -112,7 +112,7 @@ for ($day = 1; $day <= $day_count; $day++, $str++) {
 
 <body>
     <div class="container">
-        <h3><a href="?ym=<?php echo $prev; ?>">Prev</a> <?php echo $html_title; ?> <a href="?ym=<?php echo $next; ?>">Next</a></h3>
+        <h3><a href="?yearMonth=<?php echo $prev; ?>">Prev</a> <?php echo $html_title; ?> <a href="?yearMonth=<?php echo $next; ?>">Next</a></h3>
         <table class="table table-bordered">
             <tr>
                 <th>Sunday</th>
